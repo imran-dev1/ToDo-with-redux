@@ -1,6 +1,6 @@
-## Redux ToDo application
+# Redux ToDo application
 
-# Features
+## Features
 - Create todo
 - Mark as complete
 - Priority set
