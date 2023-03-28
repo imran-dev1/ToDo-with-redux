@@ -1,11 +1,17 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import fetchTodos from "../redux/todos/thunk/fetchTodos";
 import TodoCard from "./TodoCard";
 
 const TodoList = () => {
+   const dispatch = useDispatch();
    const todos = useSelector((state) => state.todos);
    const filters = useSelector((state) => state.filters);
    const { status, colors } = filters;
+
+   useEffect(() => {
+      dispatch(fetchTodos);
+   }, [dispatch]);
 
    const filterByStatus = (todo) => {
       switch (status) {
