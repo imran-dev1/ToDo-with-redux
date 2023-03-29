@@ -1,18 +1,20 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import cancelImage from "../assets/images/cancel.png";
-import { toggled, colorSelected, deleted } from "../redux/todos/actions";
+import { deleted } from "../redux/todos/actions";
+import toggleTodo from "../redux/todos/thunk/toggleTodo";
+import updateColor from "../redux/todos/thunk/updateColor";
 
 const TodoCard = ({ todo }) => {
    const dispatch = useDispatch();
    const { id, text, completed, color } = todo;
 
    const handleStatus = (id) => {
-      dispatch(toggled(id));
+      dispatch(toggleTodo(id, completed));
    };
 
    const handleColor = (id, color) => {
-      dispatch(colorSelected(id, color));
+      dispatch(updateColor(id, color));
    };
 
    const handleDelete = (id) => {

@@ -3,7 +3,8 @@ import noteImage from "../assets/images/notes.png";
 import doubleTickImage from "../assets/images/double-tick.png";
 import plusImage from "../assets/images/plus.png";
 import { useDispatch } from "react-redux";
-import { added, allCompleted, clearCompleted } from "../redux/todos/actions";
+import { allCompleted, clearCompleted } from "../redux/todos/actions";
+import addTodo from "../redux/todos/thunk/addTodo";
 
 const Header = () => {
    const [text, setText] = useState("");
@@ -11,7 +12,7 @@ const Header = () => {
 
    const handleAddTodo = (e) => {
       e.preventDefault();
-      dispatch(added(text));
+      dispatch(addTodo(text));
       setText("");
    };
 
